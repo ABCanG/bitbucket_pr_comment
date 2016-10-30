@@ -1,0 +1,56 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'open3'
+require 'bitbucket_pr_commnet'
+
+begin
+  option = ARGV.getopts('', 'client_id', 'client_secret')
+
+  unless (`git` rescue nil)
+    STDERR.puts 'git command not found'
+    exit 1
+  end
+
+  match = `git remote -v`.match(%r{bitbucket\.org[:/]([^/]+)/([^\.]+)\.git})
+  unless match
+    STDERR.puts 'remote repository not found'
+    exit 1
+  end
+
+  repo_username = match[1]
+  repo_slug = match[2]
+  branch = `git rev-parse --abbrev-ref HEAD`.chomp
+
+  if branch == 'HEAD'
+    branches = `git branch -a --contains`.scan(%r{.*/(.+?)$}).flatten
+    if branches.length == 1
+      branch = branches.first
+    else
+      STDERR.puts 'failed to specify branch'
+      exit 1
+    end
+  end
+
+  if ARGF.path == '-' && STDIN.isatty
+    STDERR.puts 'please select comment file'
+    exit 1
+  end
+  content = ARGF.read
+
+  BitbucketPrCommnet.exec(
+    client_id: option['client_id'] || ENV['CLIENT_ID'],
+    client_secret: option['client_secret'] || ENV['CLIENT_SECRET'],
+    content: content,
+    repo_username: repo_username,
+    repo_slug: repo_slug,
+    branch: branch
+  )
+rescue BitbucketPrCommnet::AuthorizedError,
+       BitbucketPrCommnet::NotFoundError,
+       Net::HTTPExceptions,
+       Errno::ENOENT => e
+
+  STDERR.puts e.message
+  exit 1
+end
