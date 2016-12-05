@@ -3,7 +3,7 @@ require 'json'
 require 'base64'
 require 'cgi'
 
-module BitbucketPrCommnet
+module BitbucketPrComment
   class Bitbucket
     def initialize(key, secret, repo_username, repo_slug)
       bearer_token = "#{key}:#{secret}"

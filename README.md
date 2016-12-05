@@ -1,7 +1,7 @@
-bitbucket_pr_commnet
+bitbucket_pr_comment
 ===
 
-[![Gem Version](https://badge.fury.io/rb/bitbucket_pr_commnet.svg)](https://badge.fury.io/rb/bitbucket_pr_commnet)
+[![Gem Version](https://badge.fury.io/rb/bitbucket_pr_comment.svg)](https://badge.fury.io/rb/bitbucket_pr_comment)
 
 post comment to pull requiest on bitbucket
 
@@ -11,7 +11,7 @@ post comment to pull requiest on bitbucket
 ## Install
 
 ```bash
-$ gem install bitbucket_pr_commnet
+$ gem install bitbucket_pr_comment
 ```
 
 ## Setup
@@ -31,8 +31,8 @@ And, please specify a comment by the filename or pipe.
 Exaple:
 ```
 $ cat comment_file
-Pull request commnet test!
-$ bitbucket_pr_commnet comment_file --client_id xxxx --client_secret xxxx
+Pull request comment test!
+$ bitbucket_pr_comment comment_file --client_id xxxx --client_secret xxxx
 ```
 
 OR
@@ -41,8 +41,8 @@ OR
 $ export CLIENT_ID=xxxx
 $ export CLIENT_SECRET=xxxx
 $ cat comment_file
-Pull request commnet test!
-$ cat comment_file | bitbucket_pr_commnet
+Pull request comment test!
+$ cat comment_file | bitbucket_pr_comment
 ```
 
 ## License

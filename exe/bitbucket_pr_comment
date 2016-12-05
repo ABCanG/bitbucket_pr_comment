@@ -2,7 +2,7 @@
 
 require 'optparse'
 require 'open3'
-require 'bitbucket_pr_commnet'
+require 'bitbucket_pr_comment'
 
 begin
   option = ARGV.getopts('', 'client_id', 'client_secret')
@@ -38,7 +38,7 @@ begin
   end
   content = ARGF.read
 
-  BitbucketPrCommnet.exec(
+  BitbucketPrComment.exec(
     client_id: option['client_id'] || ENV['CLIENT_ID'],
     client_secret: option['client_secret'] || ENV['CLIENT_SECRET'],
     content: content,
@@ -46,8 +46,8 @@ begin
     repo_slug: repo_slug,
     branch: branch
   )
-rescue BitbucketPrCommnet::AuthorizedError,
-       BitbucketPrCommnet::NotFoundError,
+rescue BitbucketPrComment::AuthorizedError,
+       BitbucketPrComment::NotFoundError,
        Net::HTTPExceptions,
        Errno::ENOENT => e
 

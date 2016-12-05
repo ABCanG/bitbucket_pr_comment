@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe BitbucketPrCommnet do
+describe BitbucketPrComment do
   it 'has a version number' do
-    expect(BitbucketPrCommnet::VERSION).not_to be nil
+    expect(BitbucketPrComment::VERSION).not_to be nil
   end
 
   it 'does something useful' do

@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'bitbucket_pr_commnet/version'
+require 'bitbucket_pr_comment/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'bitbucket_pr_commnet'
-  spec.version       = BitbucketPrCommnet::VERSION
+  spec.name          = 'bitbucket_pr_comment'
+  spec.version       = BitbucketPrComment::VERSION
   spec.authors       = ['ABCanG']
   spec.email         = ['abcang1015@gmail.com']
 
   spec.summary       = 'post comment to pull requiest on bitbucket.'
   spec.description   = 'post comment to pull requiest on bitbucket.'
-  spec.homepage      = 'https://github.com/ABCanG/bitbucket_pr_commnet'
+  spec.homepage      = 'https://github.com/ABCanG/bitbucket_pr_comment'
   spec.license       = 'MIT'
 
   spec.files = `git ls-files -z`.split("\x0").reject do |f|

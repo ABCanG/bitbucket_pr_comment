@@ -1,8 +1,8 @@
-require 'bitbucket_pr_commnet/version'
-require 'bitbucket_pr_commnet/error'
-require 'bitbucket_pr_commnet/bitbucket'
+require 'bitbucket_pr_comment/version'
+require 'bitbucket_pr_comment/error'
+require 'bitbucket_pr_comment/bitbucket'
 
-module BitbucketPrCommnet
+module BitbucketPrComment
   def self.exec(client_id:, client_secret:, content:, repo_username:, repo_slug:, branch:)
     bitbucket = Bitbucket.new(client_id, client_secret, repo_username, repo_slug)
     pullreq_list = bitbucket.get_pullreq_list
