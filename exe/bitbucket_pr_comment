@@ -23,7 +23,7 @@ begin
   branch = `git rev-parse --abbrev-ref HEAD`.chomp
 
   if branch == 'HEAD'
-    branches = `git branch -a --contains`.scan(%r{.*/(.+?)$}).flatten
+    branches = `git branch -a --contains`.scan(%r{remotes/origin/(.+?)$}).flatten
     if branches.length == 1
       branch = branches.first
     else
